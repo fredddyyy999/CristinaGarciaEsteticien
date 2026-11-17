@@ -9,6 +9,11 @@
   var raiz = document.documentElement;
   window.appLista = true; // lo comprueba el script de seguridad de index.html
 
+  // Al abrir o recargar la web, empezar siempre por la portada (el navegador recuerda
+  // por dónde ibas y, si no, la abriría a mitad de página). Si el enlace lleva #sección, se respeta.
+  if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+  if (!location.hash) { window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); }
+
   /* ---------- Cabecera: fondo al hacer scroll ---------- */
   var cabecera = document.getElementById('cabecera');
   if (cabecera) {
