@@ -446,6 +446,12 @@ strong { font-weight: 500; color: var(--tinta); }
 .sobre__figura { justify-self: center; width: min(100%, 24rem); }
 .sobre__figura .arco { background: linear-gradient(160deg, var(--beige), #E7DED1); }
 .sobre__texto h2 { margin-bottom: 1.4rem; }
+/* Cuando la foto va encima del texto (móvil y tableta), la cabecera se centra como en el resto de secciones */
+@media (max-width: 899px) {
+  .sobre__texto > .sobretitulo { justify-content: center; }
+  .sobre__texto > .sobretitulo::after { content: ""; flex: none; width: 2.2rem; height: 1px; background: currentColor; opacity: .6; }
+  .sobre__texto > h2 { text-align: center; }
+}
 .sobre__texto > p + p { margin-top: 1.1rem; }
 
 .valores {
@@ -554,8 +560,64 @@ strong { font-weight: 500; color: var(--tinta); }
 .opiniones .sobretitulo::after { content: ""; width: 2.2rem; height: 1px; background: currentColor; opacity: .6; }
 .opiniones h2 { margin-bottom: 1.3rem; color: var(--blanco); }
 .opiniones h2 em { color: var(--beige); }
-.opiniones .btn { margin-top: 2.2rem; }
 .opiniones :focus-visible { outline-color: var(--beige); }
+
+/* Estrellas doradas */
+.estrellas { color: #D9B56F; letter-spacing: .12em; }
+
+/* Resumen "★★★★★ 5,0 · 16 reseñas" */
+.opiniones__resumen {
+  display: inline-flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: .3rem .5rem;
+  color: #E9DFD3; text-decoration: none; font-size: .95rem;
+}
+.opiniones__resumen strong { font-family: var(--serif); font-size: 1.6rem; font-weight: 500; color: var(--blanco); }
+.opiniones__resumen .estrellas { font-size: 1.1rem; }
+.opiniones__resumen:hover span:last-child { text-decoration: underline; }
+
+/* Carrusel de reseñas: se desliza con el dedo */
+.opiniones__carrusel {
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min(82%, 22rem);
+  gap: 1rem;
+  max-width: var(--ancho);
+  margin: 2.4rem auto 0;
+  padding: .4rem var(--margen) 1.4rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--margen);
+  scrollbar-width: none;
+  text-align: left;
+}
+.opiniones__carrusel::-webkit-scrollbar { display: none; }
+/* En ordenador no se desliza: las tarjetas se colocan en filas de 3, centradas */
+@media (min-width: 1000px) {
+  .opiniones__carrusel { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; overflow: visible; }
+  .opiniones__carrusel .resena { flex: 0 1 calc((100% - 2.4rem) / 3); }
+}
+.resena {
+  display: flex; flex-direction: column; gap: .7rem;
+  margin: 0; padding: 1.6rem 1.5rem 1.4rem;
+  border-radius: var(--radio);
+  background: var(--crema);
+  color: var(--texto);
+  scroll-snap-align: start;
+}
+.resena__autora { display: flex; align-items: center; gap: .75rem; font-weight: 500; color: var(--tinta); }
+.resena__inicial {
+  display: grid; place-items: center; flex: none;
+  width: 2.5rem; height: 2.5rem; border-radius: 50%;
+  background: var(--marron); color: var(--blanco);
+  font-family: var(--serif); font-size: 1.2rem;
+}
+.resena .estrellas { margin: 0; font-size: .95rem; }
+.resena blockquote { flex: 1; margin: 0; font-family: var(--serif); font-size: 1.15rem; line-height: 1.5; color: var(--tinta); }
+.resena__origen { margin: 0; font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: var(--topo); }
+
+.opiniones__pie { margin-top: 1.2rem; }
+.opiniones__acciones { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem 1.6rem; margin-top: 1.8rem; }
+.opiniones__todas { color: var(--beige); }
 
 /* ---------- 10. Contacto ---------- */
 .contacto__rejilla { display: grid; gap: clamp(2.8rem, 5vw, 4.5rem); align-items: start; }
@@ -863,6 +925,7 @@ mark.pendiente { padding: .05em .4em; border-radius: 4px; background: #F3D9A6; c
   .filtro { padding: .5rem .85rem; font-size: .7rem; letter-spacing: .1em; }
 
   .opiniones .btn { width: 100%; }
+  .opiniones__carrusel { margin-top: 1.8rem; }
   .datos__valor { font-size: 1.3rem; }
   .formulario { box-shadow: none; }
   .mapa { min-height: 18rem; }

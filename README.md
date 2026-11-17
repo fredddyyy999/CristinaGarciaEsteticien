@@ -41,6 +41,10 @@ Abrir http://localhost:5173/ — y con `?revision` (http://localhost:5173/?revis
 
 **Si cambia el horario** hay que tocarlo en 3 sitios: lista `.horario` y pie de `index.html`, `HORARIO` en `app.js`, y `openingHoursSpecification` en el `<head>`.
 
+## Reseñas
+
+En "Opiniones" hay 5 reseñas de Google puestas a mano (extractos, solo nombre e inicial, sin foto) y el resumen "5,0 · 16 reseñas". **No se actualizan solas**: cuando cambien la nota o el número, o haya reseñas nuevas que merezca la pena mostrar, editarlas en `index.html` (sección `OPINIONES`).
+
 ## Pendiente
 
 - [ ] **Al publicar de verdad**: quitar de `index.html` la línea `<meta name="robots" content="noindex, nofollow">` (ahora oculta la web a Google mientras está en pruebas en GitHub Pages).

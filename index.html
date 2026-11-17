@@ -169,7 +169,7 @@
     <!-- ===================== SERVICIOS ===================== -->
     <section class="seccion servicios" id="servicios">
       <div class="contenedor">
-        <header class="seccion__cabecera revelar">
+        <header class="seccion__cabecera seccion__cabecera--centro revelar">
           <p class="sobretitulo">Servicios</p>
           <h2>Todo lo que necesitas para <em>verte y sentirte bien</em></h2>
           <p>Cada persona es distinta, y cada tratamiento también. Cuéntame qué necesitas y lo adaptamos a ti.</p>
@@ -662,17 +662,62 @@
       <svg class="opiniones__marca monograma" aria-hidden="true"><use href="#monograma"/></svg>
       <div class="contenedor opiniones__contenido revelar">
         <p class="sobretitulo">Opiniones</p>
-        <h2>¿Ya has pasado por el centro? <em>Cuéntalo</em></h2>
-        <p>Tu opinión me ayuda a seguir mejorando y a que más personas conozcan el centro. Solo te llevará un minuto.</p>
-        <!-- Cuando haya reseñas reales con permiso para publicarlas, se pueden añadir aquí encima del botón -->
-        <a class="btn btn--claro" href="https://g.page/r/CertJnmVpiFyEBI/review" target="_blank" rel="noopener">Dejar una reseña en Google</a>
+        <h2>Lo que dicen <em>mis clientas</em></h2>
+        <!-- Nota y número de reseñas: actualizar a mano cuando cambien en Google -->
+        <a class="opiniones__resumen" href="https://search.google.com/local/reviews?placeid=ChIJEXd6RwCxZw0R6u0meZWmIXI" target="_blank" rel="noopener">
+          <span class="estrellas" aria-hidden="true">★★★★★</span>
+          <strong>5,0</strong>
+          <span>· 16 reseñas en Google</span>
+        </a>
+      </div>
+
+      <!-- Reseñas seleccionadas de Google (extractos). Solo nombre e inicial del apellido, sin foto -->
+      <div class="opiniones__carrusel" role="region" aria-label="Reseñas de clientas" tabindex="0">
+        <figure class="resena">
+          <figcaption class="resena__autora"><span class="resena__inicial" aria-hidden="true">E</span>Eli</figcaption>
+          <p class="estrellas" role="img" aria-label="5 de 5 estrellas">★★★★★</p>
+          <blockquote>«El centro es súper bonito, transmite un montón de paz […] Cristina es una profesional como la copa de un pino […] jamás había tenido la calidad de uña que tengo.»</blockquote>
+          <p class="resena__origen">Reseña de Google</p>
+        </figure>
+        <figure class="resena">
+          <figcaption class="resena__autora"><span class="resena__inicial" aria-hidden="true">A</span>Amelia A.</figcaption>
+          <p class="estrellas" role="img" aria-label="5 de 5 estrellas">★★★★★</p>
+          <blockquote>«Es una profesional de primera, te asesora […] es muy minuciosa y no escatima ni un segundo en dedicarte. Vivo en Madrid y nadie ha trabajado mis uñas como ella.»</blockquote>
+          <p class="resena__origen">Reseña de Google</p>
+        </figure>
+        <figure class="resena">
+          <figcaption class="resena__autora"><span class="resena__inicial" aria-hidden="true">M</span>María José P.</figcaption>
+          <p class="estrellas" role="img" aria-label="5 de 5 estrellas">★★★★★</p>
+          <blockquote>«¡Una gran profesional en su trabajo! Encantada por su amabilidad y por todos sus consejos.»</blockquote>
+          <p class="resena__origen">Reseña de Google</p>
+        </figure>
+        <figure class="resena">
+          <figcaption class="resena__autora"><span class="resena__inicial" aria-hidden="true">R</span>Rocío E.</figcaption>
+          <p class="estrellas" role="img" aria-label="5 de 5 estrellas">★★★★★</p>
+          <blockquote>«Muy buena chica y muy buen trabajo, ¡me encanta! Desde que la descubrí no la cambio por nada.»</blockquote>
+          <p class="resena__origen">Reseña de Google</p>
+        </figure>
+        <figure class="resena">
+          <figcaption class="resena__autora"><span class="resena__inicial" aria-hidden="true">A</span>Ana M.</figcaption>
+          <p class="estrellas" role="img" aria-label="5 de 5 estrellas">★★★★★</p>
+          <blockquote>«Cristina es un encanto y muy buena profesional, recomiendo 100%.»</blockquote>
+          <p class="resena__origen">Reseña de Google</p>
+        </figure>
+      </div>
+
+      <div class="contenedor opiniones__contenido opiniones__pie revelar">
+        <p>¿Ya has pasado por el centro? Tu opinión me ayuda a seguir mejorando y a que más personas lo conozcan. Solo te llevará un minuto.</p>
+        <div class="opiniones__acciones">
+          <a class="btn btn--claro" href="https://g.page/r/CertJnmVpiFyEBI/review" target="_blank" rel="noopener">Dejar una reseña en Google</a>
+          <a class="enlace opiniones__todas" href="https://search.google.com/local/reviews?placeid=ChIJEXd6RwCxZw0R6u0meZWmIXI" target="_blank" rel="noopener">Ver todas las reseñas</a>
+        </div>
       </div>
     </section>
 
     <!-- ===================== CONTACTO ===================== -->
     <section class="seccion contacto" id="contacto">
       <div class="contenedor">
-        <header class="seccion__cabecera revelar">
+        <header class="seccion__cabecera seccion__cabecera--centro revelar">
           <p class="sobretitulo">Contacto</p>
           <h2>Pide tu cita, <em>te espero</em></h2>
           <p>Escríbeme por WhatsApp, llámame o pásate por el centro. Te respondo lo antes posible.</p>
