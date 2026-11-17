@@ -234,34 +234,26 @@ strong { font-weight: 500; color: var(--tinta); }
   color: var(--marron);
   text-decoration: none;
 }
-.marca__texto { display: flex; flex-direction: column; line-height: 1.1; }
+/* Monograma, nombre y subtítulo son las piezas OFICIALES de su serigrafía (assets/img/marca.svg,
+   sacado de logo-completo.svg); no se escriben con ninguna fuente. El subtítulo va centrado bajo
+   el nombre, como en el logo. En el logo original el subtítulo mide el 58 % del nombre; aquí se
+   agranda al 80 % para que se pueda leer en el móvil. Los atributos width/height del HTML son
+   solo la reserva por si el navegador tuviera una hoja de estilos antigua guardada. */
+.marca .monograma { width: 3.5rem; height: 2.48rem; }
+.marca__texto { display: flex; flex-direction: column; align-items: center; }
 .marca__nombre {
-  font-family: var(--serif);
-  font-size: 1.28rem;
-  font-weight: 500;
-  letter-spacing: .15em;
-  text-transform: uppercase;
+  display: block;
+  width: 14rem;
+  height: auto;
+  aspect-ratio: 6186 / 721;
   color: var(--cafe);
-  white-space: nowrap;
 }
-/* La "C" de Cristina y la "G" de García son las letras oficiales de su serigrafía
-   (assets/img/letra-c.svg y letra-g.svg), como en su letrero y sus toallas.
-   La letra de texto va oculta a la vista para que el nombre se lea y se copie bien.
-   El tamaño y el color van en el propio <svg> (atributos), para que se vea bien
-   aunque el navegador tenga guardada una versión antigua de esta hoja de estilos. */
-.letra svg {
-  display: inline; /* en línea con las letras (por defecto los svg van en bloque, ver arriba) */
-  margin-right: .15em; /* igual que el letter-spacing de .marca__nombre */
-  overflow: visible;
-}
-
 .marca__sub {
-  margin-top: .3rem;
-  font-size: .6rem;
-  font-weight: 400;
-  letter-spacing: .21em;
-  text-transform: uppercase;
-  white-space: nowrap;
+  display: block;
+  width: 80%;
+  height: auto;
+  aspect-ratio: 3628 / 248;
+  margin-top: .42rem;
 }
 
 .nav { display: flex; align-items: center; gap: clamp(1.3rem, 2.4vw, 2.2rem); white-space: nowrap; }
@@ -339,9 +331,8 @@ strong { font-weight: 500; color: var(--tinta); }
 }
 
 @media (max-width: 420px) {
-  .marca .monograma { width: 2.9rem; height: 1.76rem; }
-  .marca__nombre { font-size: 1.08rem; }
-  .marca__sub { font-size: .52rem; letter-spacing: .17em; }
+  .marca .monograma { width: 2.9rem; height: 2.05rem; }
+  .marca__nombre { width: 11.9rem; }
 }
 
 /* ---------- 4. Portada ---------- */
