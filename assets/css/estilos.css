@@ -244,11 +244,12 @@ strong { font-weight: 500; color: var(--tinta); }
   color: var(--cafe);
   white-space: nowrap;
 }
-/* La "G" de García es la del monograma (como en su letrero y sus toallas), dibujada en SVG.
-   La "G" de texto va oculta a la vista para que el nombre se lea y se copie bien.
-   El tamaño, el color y el grosor van en el propio <svg> (atributos), para que se vea bien
+/* La "C" de Cristina y la "G" de García son las letras oficiales de su serigrafía
+   (assets/img/letra-c.svg y letra-g.svg), como en su letrero y sus toallas.
+   La letra de texto va oculta a la vista para que el nombre se lea y se copie bien.
+   El tamaño y el color van en el propio <svg> (atributos), para que se vea bien
    aunque el navegador tenga guardada una versión antigua de esta hoja de estilos. */
-.letra-g svg {
+.letra svg {
   display: inline; /* en línea con las letras (por defecto los svg van en bloque, ver arriba) */
   margin-right: .15em; /* igual que el letter-spacing de .marca__nombre */
   overflow: visible;
