@@ -1,0 +1,11 @@
+Fuentes incluidas en la web (subconjunto latino, formato WOFF2):
+
+- Cormorant Garamond (normal y cursiva), de Christian Thalmann (Catharsis Fonts)
+- Jost, de Owen Earl (indestructible type*)
+
+Ambas se distribuyen con la licencia SIL Open Font License 1.1, que permite usarlas,
+incluirlas en una web y redistribuirlas libremente:
+https://openfontlicense.org
+
+Se sirven desde la propia web (no desde Google Fonts) para no enviar la IP de las
+visitas a terceros (RGPD).
