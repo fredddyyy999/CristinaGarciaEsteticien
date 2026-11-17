@@ -381,34 +381,6 @@ strong { font-weight: 500; color: var(--tinta); }
 .arco img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .arco__marca { position: absolute; inset: 0; margin: auto; width: 52%; height: 32%; color: var(--marron); opacity: .55; }
 
-.hero__nota {
-  position: absolute;
-  left: -.6rem;
-  bottom: 2rem;
-  padding: .9rem 1.3rem 1rem;
-  border-radius: 14px;
-  background: var(--blanco);
-  box-shadow: var(--sombra);
-  font-size: .68rem;
-  font-weight: 400;
-  letter-spacing: .2em;
-  line-height: 1.4;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: var(--marron);
-  transition: transform .3s;
-}
-.hero__nota:hover { transform: translateY(-3px); }
-.hero__nota strong {
-  display: block;
-  margin-top: .15rem;
-  font-family: var(--serif);
-  font-size: 1.45rem;
-  font-weight: 500;
-  letter-spacing: .02em;
-  white-space: nowrap;
-}
-@media (min-width: 900px) { .hero__nota { left: -2.2rem; } }
 
 /* ---------- 5. Franja ---------- */
 .franja { overflow: hidden; padding-block: 1.05rem; border-block: 1px solid var(--linea); }
@@ -739,9 +711,11 @@ strong { font-weight: 500; color: var(--tinta); }
   background: var(--marron);
   color: var(--blanco);
   box-shadow: 0 14px 30px -12px rgba(51, 39, 31, .7);
-  transition: transform .25s, background-color .25s;
+  transition: transform .25s, background-color .25s, opacity .3s, visibility .3s;
 }
 .flotante:hover { transform: scale(1.07); background: var(--cafe); }
+/* En ordenador, el botón flotante de WhatsApp tampoco se muestra junto a los de la portada */
+html.acciones-visibles .flotante { opacity: 0; visibility: hidden; transform: scale(.8); }
 .flotante svg { width: 1.55rem; height: 1.55rem; }
 
 /* Barra de acciones inferior: solo en móvil */
@@ -781,6 +755,10 @@ strong { font-weight: 500; color: var(--tinta); }
   .barra-movil svg { width: 1.3rem; height: 1.3rem; }
   .barra-movil .barra-movil__principal { flex-direction: row; gap: .55rem; background: var(--marron); color: var(--blanco); font-size: .76rem; }
   .barra-movil .barra-movil__principal:active { background: var(--cafe); }
+
+  .barra-movil { transition: transform .35s ease, visibility .35s; }
+  /* Mientras se ven los botones de la portada, la barra se esconde para no repetirlos */
+  html.acciones-visibles .barra-movil { transform: translateY(110%); visibility: hidden; }
 
   .flotante { display: none; }
   body { padding-bottom: calc(4.4rem + env(safe-area-inset-bottom)); }
@@ -852,7 +830,6 @@ mark.pendiente { padding: .05em .4em; border-radius: 4px; background: #F3D9A6; c
   .hero__acciones .btn { width: 100%; }
   .hero__datos { margin-top: 1.8rem; gap: .35rem 1.4rem; font-size: .84rem; }
   .hero__figura { width: min(82%, 20rem); }
-  .hero__nota { display: none; } /* ya está la barra inferior */
   .sobretitulo { font-size: .7rem; letter-spacing: .2em; }
 
   /* Servicios: carrusel deslizable con el dedo */

@@ -55,4 +55,4 @@ Abrir http://localhost:5173/ — y con `?revision` (http://localhost:5173/?revis
 - [ ] Revisar el **texto "Hola, soy Cristina"**.
 - [ ] Textos legales: **nombre completo, NIF, email y fecha**.
 - [ ] Al tener dominio: cambiar `TU-DOMINIO.es` en `robots.txt` y `sitemap.xml`, y añadir en `index.html` `<link rel="canonical">`, `og:url` y `og:image` (`https://dominio/assets/img/og.png`).
-- [ ] Opcional: código postal 16239 comprobado solo por conocimiento general; verificar.
+- [x] Código postal 16239 confirmado en su ficha de Google Maps ("Cristina García Estética y Bienestar", Calle Iglesia 16, bajo B). El enlace de reseñas lleva a esa misma ficha.

@@ -147,6 +147,15 @@
     rejillaServicios.addEventListener('scroll', marcarPunto, { passive: true });
   }
 
+  /* ---------- Barra inferior / botón flotante: solo cuando ya no se ven los botones de la portada ---------- */
+  var accionesPortada = document.querySelector('.hero__acciones');
+  if (accionesPortada && 'IntersectionObserver' in window) {
+    raiz.classList.add('acciones-visibles'); // al cargar arriba del todo están a la vista
+    new IntersectionObserver(function (entradas) {
+      raiz.classList.toggle('acciones-visibles', entradas[0].isIntersecting);
+    }, { threshold: 0 }).observe(accionesPortada);
+  }
+
   /* ---------- Galería: filtros por servicio, "ver más" y visor ---------- */
   var rejillaGaleria = document.getElementById('galeria-rejilla');
   if (rejillaGaleria) {
