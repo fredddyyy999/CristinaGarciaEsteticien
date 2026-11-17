@@ -50,7 +50,7 @@ Abrir http://localhost:5173/ — y con `?revision` (http://localhost:5173/?revis
 - [ ] Faltan fotos de **tratamientos faciales y corporales** y del **local** (no hay en Instagram).
 - [ ] **Foto de Cristina** o del local → `assets/img/cristina.jpg` (vertical 4:5). Aparece sola.
 - [x] **Portada**: `assets/img/hero.jpg` es un fotograma (1080 px) del reel de inauguración (instagram.com/reel/DZAj7FksQjK), sin el logo superpuesto. Si Cristina tiene la foto original, mejor aún. Ese reel recorre todo el local: de ahí se pueden sacar fotos del centro.
-- [ ] **Logo**: el monograma CG está redibujado a mano en SVG; si hay archivo original (SVG/AI/PDF), cambiarlo.
+- [x] **Logo**: monograma CG oficial (serigrafía) en `assets/img/logo.svg` (marrón #605044) y `logo-negro.svg`. En las páginas va como `<symbol id="monograma">` y toma el color del texto. Si cambia, sustituir el trazado y ejecutar `herramientas\generar-imagenes.ps1` para rehacer `apple-touch-icon.png` y `og.png`.
 - [ ] Confirmar con Cristina la **lista de servicios** de cada tarjeta y si se publican **tarifas**. Añadidas por lo visto en sus historias destacadas: **Cejas** (diseño y laminado), **Depilación láser** y **masajes** (Ritual Mare Nostrum, dentro de la tarjeta de corporales).
 - [ ] Revisar el **texto "Hola, soy Cristina"**.
 - [ ] Textos legales: **nombre completo, NIF, email y fecha**.

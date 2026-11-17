@@ -11,34 +11,47 @@ $destino = Join-Path (Resolve-Path (Join-Path $PSScriptRoot '..')).Path 'assets\
 $beige  = [System.Drawing.ColorTranslator]::FromHtml('#D8CEBF')
 $crema  = [System.Drawing.ColorTranslator]::FromHtml('#F7F2EB')
 $marron = [System.Drawing.ColorTranslator]::FromHtml('#6B5143')
+$logo   = [System.Drawing.ColorTranslator]::FromHtml('#605044') # marrón oficial del logotipo
 $cafe   = [System.Drawing.ColorTranslator]::FromHtml('#4B3930')
 
-# Monograma CG en un lienzo de 214x130 (las mismas curvas que assets/img/logo.svg)
+# Monograma CG oficial: se lee el trazado de assets/img/logo.svg (solo usa comandos M, C y Z absolutos)
+$svgLogo = [IO.File]::ReadAllText((Join-Path $destino 'logo.svg'))
+$trazadoLogo = ([regex]'\sd="([^"]+)"').Match($svgLogo).Groups[1].Value
+$vbLogo = ([regex]'viewBox="([^"]+)"').Match($svgLogo).Groups[1].Value.Split(' ') | ForEach-Object { [single]::Parse($_, [Globalization.CultureInfo]::InvariantCulture) }
+
 function Nuevo-Monograma {
-  $c = New-Object System.Drawing.Drawing2D.GraphicsPath
-  $c.AddArc(16, 13, 104, 104, -38, -284)
-  $g = New-Object System.Drawing.Drawing2D.GraphicsPath
-  $g.AddArc(94, 13, 104, 104, -42, -310)
-  $g.AddBezier(197.5, 72.2, 199.5, 58, 181, 53, 166, 62)
-  $g.AddBezier(166, 62, 151, 71, 139, 76, 127, 63)
-  return @($c, $g)
+  $ruta = New-Object System.Drawing.Drawing2D.GraphicsPath([System.Drawing.Drawing2D.FillMode]::Alternate)
+  $inv = [Globalization.CultureInfo]::InvariantCulture
+  $actual = $null
+  foreach ($m in [regex]::Matches($trazadoLogo, '([MCZ])([^MCZ]*)')) {
+    $nums = [regex]::Matches($m.Groups[2].Value, '-?\d+(?:\.\d+)?') | ForEach-Object { [single]::Parse($_.Value, $inv) }
+    switch ($m.Groups[1].Value) {
+      'M' { $ruta.StartFigure(); $actual = New-Object System.Drawing.PointF($nums[0], $nums[1]) }
+      'C' {
+        for ($i = 0; $i + 5 -lt $nums.Count; $i += 6) {
+          $fin = New-Object System.Drawing.PointF($nums[$i + 4], $nums[$i + 5])
+          $ruta.AddBezier($actual, (New-Object System.Drawing.PointF($nums[$i], $nums[$i + 1])), (New-Object System.Drawing.PointF($nums[$i + 2], $nums[$i + 3])), $fin)
+          $actual = $fin
+        }
+      }
+      'Z' { $ruta.CloseFigure() }
+    }
+  }
+  return $ruta
 }
 
-function Dibujar-Monograma($lienzo, [single]$x, [single]$y, [single]$ancho, $color, [single]$grosor) {
-  $escala = $ancho / 214
+# Dibuja el monograma relleno con su esquina superior izquierda en (x, y) y el ancho indicado
+function Dibujar-Monograma($lienzo, [single]$x, [single]$y, [single]$ancho, $color) {
+  $escala = $ancho / $vbLogo[2]
   $matriz = New-Object System.Drawing.Drawing2D.Matrix
   $matriz.Translate($x, $y)
   $matriz.Scale($escala, $escala)
-  $pluma = New-Object System.Drawing.Pen($color, $grosor)
-  $pluma.StartCap = [System.Drawing.Drawing2D.LineCap]::Round
-  $pluma.EndCap = [System.Drawing.Drawing2D.LineCap]::Round
-  $pluma.LineJoin = [System.Drawing.Drawing2D.LineJoin]::Round
-  foreach ($trazo in (Nuevo-Monograma)) {
-    $trazo.Transform($matriz)
-    $lienzo.DrawPath($pluma, $trazo)
-    $trazo.Dispose()
-  }
-  $pluma.Dispose()
+  $matriz.Translate(-$vbLogo[0], -$vbLogo[1])
+  $ruta = Nuevo-Monograma
+  $ruta.Transform($matriz)
+  $pincel = New-Object System.Drawing.SolidBrush($color)
+  $lienzo.FillPath($pincel, $ruta)
+  $pincel.Dispose(); $ruta.Dispose()
 }
 
 # Texto centrado con espaciado entre letras
@@ -72,7 +85,7 @@ function Nuevo-Lienzo([int]$ancho, [int]$alto) {
 # --- Icono 180x180 ---
 $imagen, $lienzo = Nuevo-Lienzo 180 180
 $lienzo.Clear($beige)
-Dibujar-Monograma $lienzo 27 51.7 126 $marron 4.2
+Dibujar-Monograma $lienzo 27 51.7 126 $logo
 $imagen.Save((Join-Path $destino 'apple-touch-icon.png'), [System.Drawing.Imaging.ImageFormat]::Png)
 $lienzo.Dispose(); $imagen.Dispose()
 
@@ -83,7 +96,7 @@ $fondo = New-Object System.Drawing.SolidBrush($beige)
 $lienzo.FillEllipse($fondo, 760, -260, 760, 760)
 $lienzo.FillEllipse($fondo, -330, 330, 620, 620)
 $fondo.Dispose()
-Dibujar-Monograma $lienzo 440 96 320 $marron 6
+Dibujar-Monograma $lienzo 440 96 320 $logo
 
 $i = [char]0x00CD   # I con tilde
 $e = [char]0x00C9   # E con tilde

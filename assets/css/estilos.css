@@ -123,7 +123,7 @@ strong { font-weight: 500; color: var(--tinta); }
 .icono-relleno { fill: currentColor; }
 .monograma {
   width: 3.4rem; height: 2.07rem; flex: none;
-  fill: none; stroke: currentColor; stroke-width: 3.4; stroke-linecap: round;
+  fill: currentColor; stroke: none; /* monograma oficial relleno: toma el color del texto */
 }
 
 /* Botones */
@@ -571,7 +571,7 @@ strong { font-weight: 500; color: var(--tinta); }
   left: 50%;
   width: min(120vw, 62rem);
   height: auto;
-  aspect-ratio: 214 / 130;
+  aspect-ratio: 1327 / 808;
   transform: translate(-50%, -50%);
   color: var(--blanco);
   opacity: .05;
