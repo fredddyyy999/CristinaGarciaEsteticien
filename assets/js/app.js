@@ -7,7 +7,7 @@
   var WHATSAPP = '34622562920';
 
   var raiz = document.documentElement;
-  window.appLista = true; // lo comprueba el script de seguridad de index.html
+  window.appLista = true; // lo comprueba assets/js/inicio.js
 
   // Al abrir o recargar la web, empezar siempre por la portada (el navegador recuerda
   // por dónde ibas y, si no, la abriría a mitad de página). Si el enlace lleva #sección, se respeta.
@@ -272,7 +272,7 @@
       marco.src = mapa.getAttribute('data-src');
       marco.title = 'Mapa: C/ Iglesia 16, bajo B, Casasimarro (Cuenca)';
       marco.loading = 'lazy';
-      marco.referrerPolicy = 'no-referrer-when-downgrade';
+      marco.referrerPolicy = 'strict-origin-when-cross-origin';
       marco.setAttribute('allowfullscreen', '');
       mapa.textContent = '';
       mapa.appendChild(marco);
